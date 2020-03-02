@@ -5,11 +5,11 @@ import java.util.Objects;
 public class demo {
     public static void main (String [] args){
         System.out.println("Hello world");
-        firstCheck();
+        //firstCheck();
     }
 
-    private static void firstCheck() {
-        SimpleClass simpleClass = null;
+    private void firstCheck() {
+        SimpleClass simpleClass = new SimpleClass(1,"test");
         Objects.requireNonNull(simpleClass, "Cannot be null");
 
     }

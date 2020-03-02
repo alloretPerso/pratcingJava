@@ -17,7 +17,15 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.7.0</version>
+		</plugin>
+	</plugins>
+</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
@@ -53,6 +61,7 @@
 		</dependency>
 	</dependencies>
 
+<!--
 	<build>
 		<plugins>
 			<plugin>
@@ -61,5 +70,6 @@
 			</plugin>
 		</plugins>
 	</build>
+-->
 
 </project>

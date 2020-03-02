@@ -26,6 +26,5 @@ class ClinicCalendarTest {
                     () -> assertEquals("Ralph avery", appointmentList.get(0).getDoctor().getName())
             );
            }
-
     }
 }
