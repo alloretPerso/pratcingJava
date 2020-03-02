@@ -43,7 +43,7 @@ public class Flight {
     public boolean removePassenger(Passenger passenger) {
         switch (flightType) {
             case "Economy":
-                if (passenger.isVip()) {
+                if (!passenger.isVip()) {
                     return passengerList.remove(passenger);
 
                 }

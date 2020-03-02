@@ -32,3 +32,5 @@ build/
 /target/maven-status/maven-compiler-plugin/
 /target/maven-status/maven-compiler-plugin/
 /demo.iml
+target/*
+/target/
