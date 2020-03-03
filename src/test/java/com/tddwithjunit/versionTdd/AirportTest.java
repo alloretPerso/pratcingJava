@@ -101,6 +101,18 @@ public class AirportTest {
                         () -> assertEquals(0, businessFlight.getPassengerList().size())
                 );
             }
+            @DisplayName("Then you cannot add him to an economy flight more than once")
+            @RepeatedTest(5)
+            public void testEconomyFlightUsualPassengerAddedOnlyOnce(RepetitionInfo repetitionInfo) {
+                for (int i = 0; i < repetitionInfo.getCurrentRepetition(); i++) {
+                    businessFlight.addPassenger(mike);
+                }
+                assertAll(
+                        () -> assertEquals(1, businessFlight.getPassengerList().size()),
+                        () -> assertTrue(businessFlight.getPassengerList().contains(mike)),
+                        () -> assertTrue(new ArrayList<>(businessFlight.getPassengerList()).get(0).getName().equals("Mike"))
+                );
+            }
         }
 
         @Nested
@@ -146,6 +158,18 @@ public class AirportTest {
                         () -> assertEquals(0, premiumFlight.getPassengerList().size()),
                         () -> assertEquals(false, premiumFlight.removePassenger(mike)),
                         () -> assertEquals(0, premiumFlight.getPassengerList().size())
+                );
+            }
+            @DisplayName("Then you cannot add him to an economy flight more than once")
+            @RepeatedTest(5)
+            public void testEconomyFlightUsualPassengerAddedOnlyOnce(RepetitionInfo repetitionInfo) {
+                for (int i = 0; i < repetitionInfo.getCurrentRepetition(); i++) {
+                    premiumFlight.addPassenger(john);
+                }
+                assertAll(
+                        () -> assertEquals(1, premiumFlight.getPassengerList().size()),
+                        () -> assertTrue(premiumFlight.getPassengerList().contains(john)),
+                        () -> assertTrue(new ArrayList<>(premiumFlight.getPassengerList()).get(0).getName().equals("John"))
                 );
             }
         }
