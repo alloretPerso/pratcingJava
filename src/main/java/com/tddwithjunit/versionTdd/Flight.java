@@ -1,12 +1,10 @@
 package com.tddwithjunit.versionTdd;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public abstract class Flight {
     private String id;
-    protected List<Passenger> passengerList = new ArrayList<>();
+    protected Set<Passenger> passengerList = new HashSet<>();
 
     public Flight(String id) {
         this.id = id;
@@ -16,8 +14,8 @@ public abstract class Flight {
         return id;
     }
 
-    public List<Passenger> getPassengerList() {
-        return Collections.unmodifiableList(passengerList);
+    public Set<Passenger> getPassengerList() {
+        return Collections.unmodifiableSet(passengerList);
     }
 
 

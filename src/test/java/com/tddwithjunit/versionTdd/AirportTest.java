@@ -2,6 +2,8 @@ package com.tddwithjunit.versionTdd;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AirportTest {
@@ -32,9 +34,22 @@ public class AirportTest {
                         () -> assertEquals("1", economyFlight.getId()),
                         () -> assertEquals(true, economyFlight.addPassenger(mike)),
                         () -> assertEquals(1, economyFlight.getPassengerList().size()),
-                        () -> assertEquals("Mike", economyFlight.getPassengerList().get(0).getName()),
+                        () -> assertEquals("Mike", new ArrayList<>(economyFlight.getPassengerList()).get(0).getName()),
                         () -> assertEquals(true, economyFlight.removePassenger(mike)),
                         () -> assertEquals(0, economyFlight.getPassengerList().size())
+                );
+            }
+
+            @DisplayName("Then you cannot add him to an economy flight more than once")
+            @RepeatedTest(5)
+            public void testEconomyFlightUsualPassengerAddedOnlyOnce(RepetitionInfo repetitionInfo) {
+                for (int i = 0; i < repetitionInfo.getCurrentRepetition(); i++) {
+                    economyFlight.addPassenger(mike);
+                }
+                assertAll(
+                        () -> assertEquals(1, economyFlight.getPassengerList().size()),
+                        () -> assertTrue(economyFlight.getPassengerList().contains(mike)),
+                        () -> assertTrue(new ArrayList<>(economyFlight.getPassengerList()).get(0).getName().equals("Mike"))
                 );
             }
         }
@@ -49,7 +64,7 @@ public class AirportTest {
                         () -> assertEquals("1", economyFlight.getId()),
                         () -> assertEquals(true, economyFlight.addPassenger(john)),
                         () -> assertEquals(1, economyFlight.getPassengerList().size()),
-                        () -> assertEquals("John", economyFlight.getPassengerList().get(0).getName()),
+                        () -> assertEquals("John", new ArrayList<>(economyFlight.getPassengerList()).get(0).getName()),
                         () -> assertEquals(false, economyFlight.removePassenger(john)),
                         () -> assertEquals(1, economyFlight.getPassengerList().size())
                 );
