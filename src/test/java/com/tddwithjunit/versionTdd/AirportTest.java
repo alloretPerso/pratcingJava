@@ -163,7 +163,7 @@ public class AirportTest {
             @DisplayName("Then you cannot add him to an economy flight more than once")
             @RepeatedTest(5)
             public void testEconomyFlightUsualPassengerAddedOnlyOnce(RepetitionInfo repetitionInfo) {
-                for (int i = 0; i < repetitionInfo.getCurrentRepetition(); i++) {
+                for (int i = 0; i <  repetitionInfo.getCurrentRepetition(); i++) {
                     premiumFlight.addPassenger(john);
                 }
                 assertAll(
