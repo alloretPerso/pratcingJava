@@ -33,12 +33,16 @@ public class demo {
 
 
     private static Function<Person, Integer> getAge = Person::getAge;
+    private static Function<Person,String> getLastName = Person::getLastName;
+    private static Comparator<Person> comparator = Comparator.comparing(getLastName);
 
     public static void main(String[] args) {
         //rLambda.run();
 
-        Person person = new Person(17);
-        System.out.println(getAge.apply(person));
+        Person person2 = new Person(17,"xx","aa");
+        Person person1 = new Person(19,"ttdd","tt");
+        System.out.println(getAge.apply(person1));
+        System.out.println(comparator.compare(person1,person2));
 
 
     }
