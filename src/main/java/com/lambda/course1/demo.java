@@ -13,6 +13,24 @@ public class demo {
 
     public static Comparator<String> lambdaRefactored = Comparator.comparingInt(String::length);
 
+    public static Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            int i = 0;
+            while (i++ < 10){
+                System.out.println("It works !");
+            }
+        }
+    };
+
+    public static Runnable rLambda = () -> {
+        int i = 0;
+        while (i++ < 10){
+            System.out.println("It works !");
+        }
+    };
+
     public static void main(String [] args){
+        rLambda.run();
     }
 }
