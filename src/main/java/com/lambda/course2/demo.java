@@ -18,6 +18,8 @@ public class demo {
 
         Predicate<String> p3 = pNew.and(pNew2);
         System.out.println(p3.test("hello"));
+        System.out.println(pNew.or(pNew2).test("h"));
+        Predicate<String> isEqualToHi = Predicate.isEqualsTo("Hi");
     }
 
 
