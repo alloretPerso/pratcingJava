@@ -1,10 +1,7 @@
 package com.lambda.course3;
 
 import javax.imageio.plugins.jpeg.JPEGImageReadParam;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -36,16 +33,17 @@ public class demo {
 
         map.values().forEach(System.out::println);
         mergeCheck();
+        test1();
     }
 
 
     private static void mergeCheck() {
-        List<Person> people = Arrays.asList(
+        List<Person> people =new ArrayList<>(Arrays.asList(
                 new Person(0, "Tom", "Friz"),
                 new Person(18, "Tim", "Friz"),
-                new Person(60, "Rob", "Friz"));
-        List<Person> people2 = Arrays.asList(
-                new Person(99, "Kim", "Friz"));
+                new Person(60, "Rob", "Friz")));
+        List<Person> people2 = new ArrayList<>(Arrays.asList(
+                new Person(99, "Kim", "Friz")));
         Map<String, List<Person>> map1 = new HashMap<>(Map.of("Value1", people));
         Map<String, List<Person>> map2 = new HashMap<>(Map.of("Value1", people2));
 
@@ -57,4 +55,22 @@ public class demo {
                     return existingPeople;
                 }));
     }
+
+    private static void test1() {
+
+        List<Person> people = new ArrayList<>(Arrays.asList(
+                new Person(0, "Tom", "Friz"),
+                new Person(18, "Tim", "Friz"),
+                new Person(60, "Rob", "Friz"),
+                new Person(70, "Jef", "Friz")));
+        people.removeIf(person -> person.getAge() < 30);
+
+        people.replaceAll(person -> new Person(person.getAge(),person.getFirstName(),person.getLastName()));
+
+        people.sort(Comparator.comparing(Person::getAge).reversed());
+
+        people.forEach(System.out::println);
+    }
+
+
 }

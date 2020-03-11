@@ -19,6 +19,15 @@ public class Person {
         this.firstName = firstName;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                '}';
+    }
+
     public Person(int age) {
         this.age = age;
     }
