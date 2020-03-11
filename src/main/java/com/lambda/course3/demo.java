@@ -86,9 +86,33 @@ public class demo {
                 new City("London")
         ));
 
+        City madrid = new City("Madrid");
+
         Map<City, List<Person>> map = new HashMap<>();
+        map.putIfAbsent(madrid, new ArrayList<>());
+        map.get(madrid).add(new Person(33, "Jack", "Friz"));
 
         System.out.println("People from paris: " + map.getOrDefault(cities.get(1), Collections.EMPTY_LIST));
+        System.out.println(map);
+
+        map.computeIfAbsent(cities.get(2), city -> new ArrayList<>()).add(new Person(70, "Jef", "Friz"));
+        System.out.println("People from London: " + map.getOrDefault(cities.get(2), Collections.EMPTY_LIST));
+
+        map.forEach((city, peoples) -> System.out.println(city + ": " + peoples));
+
+
+        Map<City, List<Person>> map2 = new HashMap<>();
+        map2.putIfAbsent(new City("Tokyo"), new ArrayList<Person>(Arrays.asList(new Person(44, "Jeff ", "Friz"))));
+
+        map.forEach(((city, people1) -> map2.merge(city, people1, (peopleFromMap2, peopleFromMap) -> {
+                    peopleFromMap2.addAll(peopleFromMap);
+                    return peopleFromMap2;
+                }))
+        );
+
+        map2.forEach(
+                ((city, people1) -> System.out.println(city + ":" +people1))
+        );
     }
 
 
