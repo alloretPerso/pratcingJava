@@ -34,11 +34,12 @@ public class demo {
         map.values().forEach(System.out::println);
         mergeCheck();
         test1();
+        test2();
     }
 
 
     private static void mergeCheck() {
-        List<Person> people =new ArrayList<>(Arrays.asList(
+        List<Person> people = new ArrayList<>(Arrays.asList(
                 new Person(0, "Tom", "Friz"),
                 new Person(18, "Tim", "Friz"),
                 new Person(60, "Rob", "Friz")));
@@ -65,11 +66,29 @@ public class demo {
                 new Person(70, "Jef", "Friz")));
         people.removeIf(person -> person.getAge() < 30);
 
-        people.replaceAll(person -> new Person(person.getAge(),person.getFirstName(),person.getLastName()));
+        people.replaceAll(person -> new Person(person.getAge(), person.getFirstName(), person.getLastName()));
 
         people.sort(Comparator.comparing(Person::getAge).reversed());
 
         people.forEach(System.out::println);
+    }
+
+    private static void test2() {
+        List<Person> people = new ArrayList<>(Arrays.asList(
+                new Person(0, "Tom", "Friz"),
+                new Person(18, "Tim", "Friz"),
+                new Person(60, "Rob", "Friz"),
+                new Person(70, "Jef", "Friz")));
+
+        List<City> cities = new ArrayList<>(Arrays.asList(
+                new City("HongKong"),
+                new City("Paris"),
+                new City("London")
+        ));
+
+        Map<City, List<Person>> map = new HashMap<>();
+
+        System.out.println("People from paris: " + map.getOrDefault(cities.get(1), Collections.EMPTY_LIST));
     }
 
 
