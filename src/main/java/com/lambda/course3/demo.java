@@ -1,5 +1,6 @@
 package com.lambda.course3;
 
+import javax.imageio.plugins.jpeg.JPEGImageReadParam;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +35,26 @@ public class demo {
         ).put("Kim", new Person(99, "Kim", "Friz"));
 
         map.values().forEach(System.out::println);
+        mergeCheck();
+    }
 
+
+    private static void mergeCheck() {
+        List<Person> people = Arrays.asList(
+                new Person(0, "Tom", "Friz"),
+                new Person(18, "Tim", "Friz"),
+                new Person(60, "Rob", "Friz"));
+        List<Person> people2 = Arrays.asList(
+                new Person(99, "Kim", "Friz"));
+        Map<String, List<Person>> map1 = new HashMap<>(Map.of("Value1", people));
+        Map<String, List<Person>> map2 = new HashMap<>(Map.of("Value1", people2));
+
+        //V merge (
+        //	K key, V newValue, BiFunction< ? Super V,? Super V, ? Extends V > remapping)
+        map2.forEach((key, value) -> map1.merge(key, value,
+                (existingPeople, newPeople) -> {
+                    existingPeople.addAll(newPeople);
+                    return existingPeople;
+                }));
     }
 }
