@@ -4,6 +4,7 @@ package com.lambda.course4;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class demo {
@@ -20,6 +21,24 @@ public class demo {
 
         int sum = filteredList.stream().reduce(Integer::sum).get();
 
-        System.out.println(listAge);
+        //System.out.println(listAge);
+
+        List<Integer> list = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4));
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(5, 6, 7, 8, 9));
+
+        BinaryOperator<Integer> op = Integer::sum;
+
+        int reduction = reduce(list, 0, op);
+        System.out.println("Reduction : " + reduction);
     }
+
+    private static int reduce(List<Integer> list, int i, BinaryOperator<Integer> op) {
+        int result = i;
+        for (int value : list) {
+            result = op.apply(result, value);
+        }
+        return result;
+    }
+
 }
