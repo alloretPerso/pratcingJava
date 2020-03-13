@@ -28,8 +28,11 @@ public class demo {
         List<Integer> list2 = new ArrayList<>(Arrays.asList(5, 6, 7, 8, 9));
 
         BinaryOperator<Integer> op = Integer::sum;
+        int reduction1 = reduce(list1, 0, op);
+        int reduction2 = reduce(list2, 0, op);
 
-        int reduction = reduce(list, 0, op);
+        int reduction = reduce(Arrays.asList(reduction1,reduction2), 0, op);
+        //int reduction = reduce(list, 0, op);
         System.out.println("Reduction : " + reduction);
     }
 
