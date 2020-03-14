@@ -34,14 +34,22 @@ public class demo {
 
         List<Person> people = new ArrayList<>(Arrays.asList(
                 new com.lambda.course4.Person(0, "Tom", "Friz"),
-                new com.lambda.course4.Person(18, "Tim", "Friz"),
+                new com.lambda.course4.Person(22, "Tim", "Friz"),
                 new com.lambda.course4.Person(60, "Rob", "Friz"),
                 new Person(70, "Jef", "Friz")));
 
-        people.stream()             //Stream<Person>
+/*        people.stream()             //Stream<Person>
                 .map(Person::getAge) //Stream<Integer>
                 .peek(System.out::println)
                 .filter(age->age>20) //Stream<Integer>
+                .forEach(System.out::println);*/
+        people.stream()
+                .skip(1)
+                .limit(1)//Stream<Person>
+                .map(Person::getAge) //Stream<Integer>
+                .filter(age->age>20) //Stream<Integer>
                 .forEach(System.out::println);
+
+
     }
 }
