@@ -31,7 +31,6 @@ public class demo {
         //System.out.println("Hello world");
 
 
-
         List<Person> people = new ArrayList<>(Arrays.asList(
                 new com.lambda.course4.Person(0, "Tom", "Friz"),
                 new com.lambda.course4.Person(22, "Tim", "Friz"),
@@ -47,9 +46,25 @@ public class demo {
                 .skip(1)
                 .limit(1)//Stream<Person>
                 .map(Person::getAge) //Stream<Integer>
-                .filter(age->age>20) //Stream<Integer>
+                .filter(age -> age > 20) //Stream<Integer>
                 .forEach(System.out::println);
 
+        //Use of an accumulator with reduce
+
+        List<Integer> ages =
+                people.stream()
+                        .reduce(
+                                new ArrayList<>(),
+                                (list, p) -> {
+                                    list.add(p.getAge());
+                                    return list;
+                                },
+                                (list1, list2) -> {
+                                    list1.addAll(list2);
+                                    return list1;
+                                }
+                        );
+        System.out.println(ages);
 
     }
 }
