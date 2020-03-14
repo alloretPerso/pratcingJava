@@ -64,7 +64,14 @@ public class demo {
                                     return list1;
                                 }
                         );
-        System.out.println(ages);
+        //System.out.println(ages);
+
+
+        List<Integer> integerList = Arrays.asList(0, 1, 2, 3, 4, 5);
+        Stream<Integer> stream1 = integerList.stream();
+        Stream<Integer> integerStream = Stream.of(0, 1, 2, 3, 4, 5);
+//        integerStream.forEach(System.out::println);
+//        stream1.forEach(System.out::println);
 
     }
 }
