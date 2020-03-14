@@ -33,7 +33,11 @@ public class demo {
 
         int reduction = reduce(Arrays.asList(reduction1,reduction2), 0, op);
         //int reduction = reduce(list, 0, op);
-        System.out.println("Reduction : " + reduction);
+        //System.out.println("Reduction : " + reduction);
+
+
+
+
     }
 
     private static int reduce(List<Integer> list, int i, BinaryOperator<Integer> op) {
