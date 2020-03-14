@@ -73,5 +73,14 @@ public class demo {
 //        integerStream.forEach(System.out::println);
 //        stream1.forEach(System.out::println);
 
+        Stream<String> stringStream = Stream.generate(() -> "one");
+        stringStream.limit(5).forEach(System.out::println);
+
+        Stream<String> streamOfStrings2 = Stream.iterate("+", s -> s + "+");
+        streamOfStrings2.limit(5).forEach(System.out::println);
+
+        IntStream streamOfInt = ThreadLocalRandom.current().ints();
+        streamOfInt.limit(5).forEach(System.out::println);
+
     }
 }
