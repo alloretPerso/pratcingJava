@@ -3,6 +3,10 @@ package com.lambda2.course2;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -16,7 +20,10 @@ public class demo {
 
             Stream<Stream<String>> streamOfStreams = Stream.of(stream1, stream2);
             Stream<String> streamOfLines = streamOfStreams.flatMap(Function.identity());
-
+            Byte test = 2;
+            int x = 4;
+            int i = x / test;
+            int a2[] = {1, 2};
 
             //System.out.println("#lines " + streamOfLines.count());
 
@@ -32,5 +39,26 @@ public class demo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        average();
+    }
+
+    private static void average() {
+        List<Person> people = new ArrayList<>(Arrays.asList(
+                new Person(0, "Tom", "Friz"),
+                new Person(18, "Tim", "Friz"),
+                new Person(60, "Rob", "Friz"),
+                new Person(70, "Jef", "Friz")));
+
+        OptionalDouble average = people.stream()
+                .mapToInt(Person::getAge)
+                .filter(age -> age > 18)
+                .average();
+
+        if (average.isPresent()) {
+            System.out.println("# the average is : " + average.getAsDouble());
+        }
+
     }
 }
