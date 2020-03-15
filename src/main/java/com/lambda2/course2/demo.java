@@ -1,20 +1,23 @@
 package com.lambda2.course2;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.nio.file.Paths.*;
+import static java.util.stream.Collectors.*;
 
 public class demo {
     public static void main(String[] args) {
-        try (Stream<String> stream1 = Files.lines(Paths.get("files/page1.txt"));
-             Stream<String> stream2 = Files.lines(Paths.get("files/page2.txt"))) {
+        try (Stream<String> stream1 = Files.lines(get("files/page1.txt"));
+             Stream<String> stream2 = Files.lines(get("files/page2.txt"))) {
            /* System.out.println("Stream 1 : " + stream1.count());
             System.out.println("Stream 2 : " + stream2.count());*/
 
@@ -42,6 +45,8 @@ public class demo {
 
 
         average();
+
+        playWithWords();
     }
 
     private static void average() {
@@ -59,6 +64,22 @@ public class demo {
         if (average.isPresent()) {
             System.out.println("# the average is : " + average.getAsDouble());
         }
+    }
 
+    public static void playWithWords() {
+
+        try {
+            Set<String> ospd = Files.lines(get("files/course2/ospd.txt"))
+                    .map(String::toLowerCase)
+                    .collect(toSet());
+            Set<String> shakespeare = Files.lines(get("files/course2/words.shakespeare.txt"))
+                    .map(String::toLowerCase)
+                    .collect(toSet());
+
+            System.out.println("# Ospd number of words " + ospd.size());
+            System.out.println("# Shakespeare number of words " + shakespeare.size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
