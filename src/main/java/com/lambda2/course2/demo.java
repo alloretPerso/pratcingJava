@@ -111,7 +111,7 @@ public class demo {
             System.out.println("Score of max word : "+ intScore.applyAsInt(sFiltered));*/
 
             IntSummaryStatistics intSummaryStatistics = shakespeare.stream()
-                    .filter(ospd::contains)
+                    .filter(ospd::contains).parallel()
                     .mapToInt(intScore)
                     .summaryStatistics();
             System.out.println("Stats : " + intSummaryStatistics);
