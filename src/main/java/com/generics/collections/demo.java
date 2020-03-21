@@ -1,8 +1,6 @@
 package com.generics.collections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class demo {
     public static void main(String[] args) {
@@ -20,6 +18,15 @@ public class demo {
         List<Person> madMenList = new ArrayList<>(Arrays.asList(madMen));
         madMenList.add(bertCooper);
         System.out.println(madMenList);
+
+        Map<String,Person> stringPersonMap = new HashMap<>();
+        stringPersonMap.put(donDraper.getName(),donDraper);
+        stringPersonMap.put(peggyOlson.getName(),peggyOlson);
+
+        for (Map.Entry<String, Person> entry : stringPersonMap.entrySet()) {
+            System.out.println(entry);
+        }
+
     }
 
     private static Person[] add(Person person, Person[] madMen) {
