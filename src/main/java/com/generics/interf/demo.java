@@ -1,10 +1,7 @@
 package com.generics.interf;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class demo {
     public static void main(String[] args) {
@@ -19,5 +16,22 @@ public class demo {
         System.out.println(madMen);
         Collections.sort(madMen, new ReverseComparator<>(new AgeComparator()));
         System.out.println(madMen);
+
+        final Person youngestCastMember = min(madMen, new AgeComparator());
+        System.out.println(youngestCastMember);
+    }
+
+    public static <T> T min(List<T> values, Comparator<T> comparator) {
+        if (values.isEmpty()) {
+            throw new IllegalArgumentException("List is empty");
+        }
+        T lowestElement = values.get(0);
+        for (int i = 1; i < values.size(); i++) {
+            final T element = values.get(i);
+            if (comparator.compare(element, lowestElement) < 0) {
+                lowestElement = element;
+            }
+        }
+        return lowestElement;
     }
 }
