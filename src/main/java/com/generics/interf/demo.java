@@ -15,7 +15,9 @@ public class demo {
         List<Person> madMen = new ArrayList<>();
         madMen.addAll(Arrays.asList(donDraper, peggyOlson, bertCooper));
         System.out.println(madMen);
-        //Collections.sort(madMen, new AgeComparator());
+        Collections.sort(madMen, new AgeComparator());
+        System.out.println(madMen);
+        Collections.sort(madMen, new ReverseComparator<>(new AgeComparator()));
         System.out.println(madMen);
     }
 }
