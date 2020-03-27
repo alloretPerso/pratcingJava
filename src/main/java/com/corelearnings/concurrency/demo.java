@@ -1,14 +1,13 @@
 package com.corelearnings.concurrency;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class demo {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         String in = "src/main/java/com/corelearnings/concurrency/in.txt";
         String out = "src/main/java/com/corelearnings/concurrency/out.txt";
 
@@ -33,6 +32,35 @@ public class demo {
 
         multiThreadingWithTreadPool(inFiles, outFiles);
         System.out.println("Fourth");
+
+        callMainThreadAfterExecution(inFiles);
+
+    }
+
+    private static void callMainThreadAfterExecution(String[] inFiles) throws InterruptedException {
+        ExecutorService es = Executors.newFixedThreadPool(3);
+        Future<Integer>[] integerFuture = new Future[inFiles.length];
+        for (int i = 0; i < inFiles.length; i++) {
+            AdderBis adder = new AdderBis(inFiles[i]);
+            integerFuture[i] = es.submit(adder);
+
+        }
+        try {
+            es.shutdown();
+        } catch (Exception e) {
+
+        }
+        int integer = 0;
+        for (Future<Integer> result : integerFuture) {
+            try {
+                integer += result.get();
+
+
+            } catch (ExecutionException e) {
+                Throwable adderEx = e.getCause();
+            }
+        }
+        System.out.println(integer);
     }
 
     private static void multiThreadingWithTreadPool(String[] inFiles, String[] outFiles) {
@@ -41,9 +69,9 @@ public class demo {
             Adder adder = new Adder(inFiles[i], outFiles[i]);
             es.submit(adder);
         }
-        try{
+        try {
             es.shutdown();
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
     }
