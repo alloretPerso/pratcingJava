@@ -43,18 +43,16 @@ public class demo {
         for (int i = 0; i < inFiles.length; i++) {
             AdderBis adder = new AdderBis(inFiles[i]);
             integerFuture[i] = es.submit(adder);
-
         }
         try {
             es.shutdown();
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         int integer = 0;
         for (Future<Integer> result : integerFuture) {
             try {
                 integer += result.get();
-
 
             } catch (ExecutionException e) {
                 Throwable adderEx = e.getCause();
