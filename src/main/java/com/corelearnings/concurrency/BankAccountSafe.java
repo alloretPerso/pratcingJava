@@ -3,10 +3,6 @@ package com.corelearnings.concurrency;
 public class BankAccountSafe {
     private int balance;
 
-    public int getBalance() {
-        return balance;
-    }
-
     public BankAccountSafe(int balance) {
         this.balance = balance;
     }
@@ -18,7 +14,11 @@ public class BankAccountSafe {
                 '}';
     }
 
-    public void deposit(int amount) {
+    public synchronized int getBalance() {
+        return balance;
+    }
+
+    public synchronized void deposit(int amount) {
         balance += amount;
     }
 }
