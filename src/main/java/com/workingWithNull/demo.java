@@ -13,11 +13,22 @@ public class demo {
 
         List<Book> books = new ArrayList<>();
 
-        books.addAll(Arrays.asList(new Book(1, 1, "valid", rl1), new Book(2, 2, null, null)));
+        books.addAll(Arrays.asList(new Book(1, 1, "First title", rl1), new Book(2, 2, null, null)));
 
-        for (Book book : books) {
+/*        for (Book book : books) {
             System.out.println(book.getReadingLevel().getGrade());
-        }
+        }*/
+        List<String> titlesResults = new ArrayList<>();
+        books.forEach(book -> {
+                    titlesResults.add(book.getTitle() + " - " +
+                            book.getReadingLevel()
+                                    .map(readingLevel -> readingLevel.getGrade())
+                                    .orElse("Not valid value")
+                    );
+
+                }
+        );
+        System.out.println(titlesResults);
     }
 
     public static boolean isBookReadyForPublication(Integer id) {

@@ -1,5 +1,7 @@
 package com.workingWithNull;
 
+import java.util.Optional;
+
 public class Book {
     private Integer id;
     private Integer authorId;
@@ -12,7 +14,7 @@ public class Book {
         this.authorId = authorId;
         this.title = title;
 
-        this.readingLevel = readingLevel == null ? NullReadingLevel.getInstance() : readingLevel;
+        this.readingLevel = readingLevel;
     }
 
     public Integer getId() {
@@ -39,8 +41,12 @@ public class Book {
         this.title = title;
     }
 
-    public ReadingLevel getReadingLevel() {
+/*    public ReadingLevel getReadingLevel() {
         return readingLevel;
+    }*/
+
+    public Optional<ReadingLevel> getReadingLevel() {
+        return Optional.ofNullable(readingLevel);
     }
 
     public void setReadingLevel(ReadingLevel readingLevel) {
