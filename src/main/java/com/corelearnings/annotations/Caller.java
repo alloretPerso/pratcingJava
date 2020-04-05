@@ -12,5 +12,12 @@ public class Caller {
         if (!annotations.simpleMethod()){
             System.out.println("I work");
         }
+
+        SimpleClassDefault simpleClassDefault = new SimpleClassDefault();
+        SimpleAnnotations simpleAnnotations = simpleClassDefault.getClass().getAnnotation(SimpleAnnotations.class);
+
+        if (simpleAnnotations.simpleMethod()){
+            System.out.println("I work too");
+        }
     }
 }
