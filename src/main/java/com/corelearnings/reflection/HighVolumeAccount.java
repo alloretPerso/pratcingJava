@@ -29,5 +29,6 @@ public final class HighVolumeAccount extends BankAccount implements Runnable {
         for (int i : listOfWithdrawal) {
             withdrawal(i);
         }
+        System.out.println("High volume has been done");
     }
 }
