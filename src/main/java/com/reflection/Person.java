@@ -5,17 +5,20 @@ import com.reflection.annotations.Column;
 import com.reflection.annotations.PrimaryKey;
 
 public class Person {
-    @PrimaryKey
+    @PrimaryKey(name="k_id")
     private long id;
-    @Column
+
+    @Column(name="c_name")
     private String name;
-    @Column
+
+    @Column(name="c_age")
     private int age;
 
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
     }

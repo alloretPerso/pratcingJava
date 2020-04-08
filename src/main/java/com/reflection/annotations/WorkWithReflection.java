@@ -9,7 +9,7 @@ public class WorkWithReflection {
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Person person = new Person("Jhon", 34);
         editAPrivateField(person);
-        Metamodel<Person> metamodel = Metamodel.of(Person.class);
+        Metamodel metamodel = Metamodel.of(Person.class);
         PrimaryKeyField primaryKeyField = metamodel.getPrimaryKey();
         List<ColumnField> columnList = metamodel.getColumns();
 
@@ -17,7 +17,7 @@ public class WorkWithReflection {
                                 + ", type = "+ primaryKeyField.getType().getSimpleName());
 
         columnList.stream().forEach( columnField ->
-                System.out.println("Column key name =" + columnField.getName()
+                System.out.println("Column key name =" + columnField.getField().getName()
                         + ", type = "+ columnField.getType().getSimpleName())
         );
     }
