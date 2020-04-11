@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 public interface EntityManager<T> {
     void persist(T t) throws IllegalAccessException;
-    /*T read(Class<?> clzz,long primaryKey);*/
 
     static <T> EntityManager<T> of(Class<T> clss) {
         return new H2EntityManager<>();

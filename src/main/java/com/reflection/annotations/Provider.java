@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class H2EntityManager<T>  extends EntityManagerImpl<T>{
+public class Provider {
+    @Provides
     public Connection buildConnection() throws SQLException {
-        return DriverManager.getConnection(
-                "value", "sa", "");
-    }
 
+        return DriverManager.getConnection(
+                "jdbc:h2:/Users/alexandrelloret/Documents/Java/practice/demo/db-files/db", "sa", "");
+    }
 }
