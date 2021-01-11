@@ -1,0 +1,29 @@
+I . - Date de la composition de la République .
+Le dialogue de Platon connu sous le nom traditionnel
+de République a pour titre exact 1IOAITEIA, c'est-à-dire
+Gouvernement ou Constitution de la Cité * . Aristophane
+de Byzance le classait, avec le Timée et le Critias, dans
+sa première trilogie ; Thrasylle, avec le Clitophon, le
+Timée et le Critias, dans sa huitième tétralogie **. Mais
+ces classifications, qui s'inspirent d'un souci évident de
+symétrie, sont assez arbitraires, et ne nous renseignent
+nullement sur la chronologie des oeuvres de Platon .
+En l'absence de toute donnée historique précise, il
+est fort malaisé de fixer, même approximativement, la
+date de composition de la République . On ne peut, en
+effet, avoir recours qu'à deux sortes d'indications : celles
+que fournit le texte lui-même par telle allusion plus ou
+moins directe aux événements de l'époque, et celles qui
+se déduisent d'une étude comparative des Dialogues .
+Les premières sont très peu nombreuses et ne nous
+apprennent presque rien, car elles peuvent aussi bien
+porter sur des faits anciens que récents . Plus féconde est
+la seconde source d'information, encore que les conclusions qu'on en tire manquent, dans une certaine mesure,
+de certitude et de précision.
+JosEè
+
+a > c || b > c ?  (a > b) ? a : b : c
+
+a = 2
+b = 3
+c = 1
